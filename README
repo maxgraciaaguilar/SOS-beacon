@@ -1,0 +1,187 @@
+SOS Beacon
+A step-by-step guide to building and using your beacon
+This guide walks you through assembling the SOS beacon and using its four modes.Follow the steps in order and you'll have a working beacon by the end. Set aside about 30–45 minutes.
+Arduino Code
+3D models
+Bill Of Materials
+#
+Part / Material
+Qty
+Source
+Unit Cost
+Total
+1
+Arduino Nano
+1
+Amazon
+$4.26
+$4.26
+2
+Small breadboard
+1
+Amazon
+$1.27
+$1.27
+3
+RGB LED
+1
+Amazon
+$0.10
+$0.10
+4
+Resistor (220 or 330 ohm)
+3
+Amazon
+$0.01
+$0.03
+5
+Push button / clicker
+1
+Amazon
+$0.28
+$0.28
+6
+9V battery
+1
+Amazon
+$1.59
+$1.59
+7
+9V-to-female connector
+1
+Amazon
+$1.12
+$1.12
+8
+8 Ohm Buzzer
+1
+Amazon
+$2.50
+$2.50
+9
+10k Linear Potentiometer
+2
+Amazon
+$0.31
+$0.62
+10
+3D printed enclosure and parts
+1
+3D printer
+$2.27
+$2.27
+
+
+PROJECT TOTAL (per kit)
+
+
+
+
+
+
+$14.04
+
+How It Works
+The beacon has two knobs and a button. One knob picks the mode, the other picks the LED color. The button starts and stops the active mode. There are four modes:
+Jingle — plays a melody through the speaker.
+Alarm — sweeps a rising-and-falling siren tone.
+SOS — flashes and beeps the Morse distress signal on a loop.
+Manual — light and tone stay on only while you hold the button.
+In every mode except Manual, one press turns the mode on and the next press turns it off.
+Wiring It Up
+Connect each component to the Arduino as shown below. Work with the board unplugged from power while you wire.
+Component
+Arduino Pin
+Notes
+Red LED leg
+D9 (PWM)
+Through a 220 Ω resistor to the red channel
+Green LED leg
+D6 (PWM)
+Through a 220 Ω resistor to the green channel
+Blue LED leg
+D5 (PWM)
+Through a 220 Ω resistor to the blue channel
+Speaker / piezo
+D7
+Other lead to GND
+Push button
+D2
+Uses internal pull-up; other side to GND
+Mode potentiometer
+A6
+Wiper to A6, ends to 5V and GND
+Color potentiometer
+A7
+Wiper to A7, ends to 5V and GND
+
+Building It, Step by Step
+Place the Arduino NANO Make sure it is in the right orientation and to connect it to the leftmost side of the breadboard and that the breadboard markings are on the right and facing you.
+
+Place the LED.  Seat the RGB LED across the center gap of the breadboard. Identify the common (longest) leg and make sure to connect that one to the ground rails (blue with negative sign)	
+
+Power Rails To make sure everything gets powered, we need to establish a common ground between the Arduino and the power supply. Connect the GND pin near the A7 pin and the GND pin near the D2 pin to the negative rails next to them, and connect the 5V pin to the positive rail. We will also bridge the two rails by connecting the positive rails together.
+Wire the color legs to the Arduino.  Run the red leg to D9, green to D6, and blue to D5. These are PWM pins, which is what lets the beacon mix smooth colors.
+
+Add the resistors.  Put one 220 or 330 Ω resistor in line with each of the three color legs (red, green, blue) and make sure that they cross the breadboard bridge.
+
+Wire in the knobs Starting from the numbered row closest to the red LED pin, connect the positive rail to it. Make sure to leave the pin holes near the power rail free to connect the potentiometer. Now do the same on the other side of the breadboard. After both positive sides are connected, go 4 pins to the left (e.g. 24 -> 20) and connect the negative rail to that numbered row. Again, do the same for the other side. Once that has been connected, take a long wire to connect the middle row to the A6 pin. Do the same on the other side to connect the A7 pin.
+
+
+Add the two potentiometers.  For each knob, connect the pins into the already wired in rows, making sure that they line up.
+
+
+Snap the circuit into the container Make sure to push the side with the Arduino in first and then push the rest. It should snap in place.
+
+Connect the speaker. Connect two jumper cables to the speaker wires, taking note of which one is connected to the red and black cables. Pass the wires through the square gap on the side of the container and then snap the speaker in place. Make sure to pull the wires in so you don’t have any wires sticking out. Once it’s snapped in place, connect the red wire lead to the D7 pin row, and connect the black wire lead to the negative power rail.
+
+
+Add the knobs Take the two plastic knobs and pass them through the holes to connect them to the potentiometers. They have a line feature that will slide into the potentiometer’s divot. Press them together until they can’t slide any further
+
+Press on the acrylic On the back side of the lid, there is a circular gap where the acrylic will attach to. Press on the acrylic until it snaps in place.
+Add the button.  Similar to the speaker, we need to pass the cables of the button through the square opening on the lid; be careful when doing this because the cables are fragile. Snap the button in place on the lid and then push the button cap in, making sure that it snaps. Connect one side of the push button to the D2 pin row and the other side to ground. The order of the wires does not matter.
+
+Connect the power supply Connect the battery leads to the circuit. Have the red wire connect to the VIN pin near the 5V and GND pins, and connect the black wire to the negative power rail.  Once everything else is wired in, you can attach the 9V battery to the circuit
+
+Make sure the colors are wired in correctly Once there is power, there will be a quick start-up animation, make sure that the light turns red, green, and blue, before starting.
+
+Close the box Put all of the wires inside the box and put the battery over the Arduino Nano. Be careful when moving the battery around because the power cables can come off the breadboard. Once everything is in place and there are no wires sticking out, press the lid until it snaps.
+
+ Snap the clip and attach the knob Similarly to the other pieces, just snap on the clip and slide the knob in place to protect the circuit.
+
+Enjoy!
+Loading the Firmware
+Install the Arduino IDE.  Download it from arduino.cc and install it for your operating system.
+Open the sketch.  Open the SOSbeacon.ino sketch, keeping its companion files in the same folder.
+Select your board and port.  Under the Tools menu, choose Arduino Nano and the serial port it's connected to.
+Upload.  Plug in the Arduino over USB and click Upload. When it finishes, the beacon runs a short red-green-blue self-test so you can confirm the LED works.
+Using Your Beacon
+Once the firmware is loaded, the beacon is ready to use:
+Pick a mode.  Turn the mode knob. Each quarter of its travel selects one mode: Jingle, Alarm, SOS, or Manual.
+Pick a color.  Turn the color knob to dial the LED anywhere around the color wheel.
+Start it.  Press the button once to start the selected mode. Press again to stop it. In Manual mode, the light and tone stay on only while the button is held.
+TIP  You can change the color knob while a mode is running and watch the beacon shift color live.
+
+Troubleshooting
+If something isn't behaving, work through these common fixes:
+If this happens…
+Try this
+Nothing happens when you press the button
+Check that the button is wired to D2 and GND, and that the sketch sets the pin to INPUT_PULLUP. A loose button is the usual culprit.
+The LED lights but shows the wrong colors
+You likely have the red/green/blue legs swapped. Match each leg to its pin in the wiring table, and confirm you wired a common-cathode LED (shared leg to GND).
+No sound from the speaker
+Confirm the speaker is on D7 with its other lead to GND. 
+Turning a knob does nothing
+Make sure the potentiometer wiper goes to A6 or A7, and the two outer pins go to 5V and GND. If reversed, the dial will simply run backwards. Alternatively, check if the physical knob did not disconnect the potentiometer.
+The beacon won't switch modes
+Mode is read from the A6 knob. Sweep it fully across its range — each quarter-turn selects one of the four modes.
+The beacon won’t do the RGB startup animation / speaker makes weird noises
+Rewire the battery and the speaker to make sure there isn’t a short circuit. If all else fails, replace the battery.
+
+
+Making It Your Own
+Once it's working, the sketch is easy to tweak:
+Default tone — change speakerTone near the top of the sketch to set the alarm and SOS pitch.
+Morse speed — adjust it to make the SOS signal faster or slower.
+The melody — swap the notes in the jingle() function to play a different tune.
