@@ -1,6 +1,8 @@
 /*
  * SOSbeacon.ino
- * Compatible with SOS beacon LED and speaker + potentiometer to control modes and color. On press, the selected mode will begin until pressed again (with exception of manual mode)
+ * Compatible with SOS beacon LED and speaker + potentiometer to control modes and color.
+ * On press, the selected mode will begin until pressed again (with exception of manual mode)
+ *
  * Maximiliano Gracia Aguilar (maxgraciaaguilar@hotmail.com)
  * 2026-06-26
  *
